@@ -2,31 +2,6 @@
 \usepackage{pgfkeys}
 
 \pgfkeys{
- /a/.is family, /a,
- % Here are the options that a user can pass
- default/.style = 
-  {width = \textwidth, height = \baselineskip,
-   position = center, inner position = center},
- width/.estore in = \myparboxWidth,
- height/.estore in = \myparboxHeight,
- position/.style = {positions/#1/.get = \myparboxPosition},
- inner position/.style = {positions/#1/.get = \myparboxInnerPos},
- % Here is the dictionary for positions.
- positions/.cd,
-  top/.initial = t,
-  center/.initial = c,
-  bottom/.initial = b,
-  stretch/.initial = s,
-}
-
-% We process the options first, then pass them to `\parbox` in the form of macros.
-\newcommand\myparbox[2][]{%
- \pgfkeys{/a, default, #1}%
- \parbox[\myparboxPosition][\myparboxHeight]
-        [\myparboxInnerPos]{\myparboxWidth}{#2}
-}
-
-\pgfkeys{
 /report/.is family,
 /report,
 title/.estore in = \rtitle,
@@ -37,6 +12,7 @@ period/.estore in = \rperiod,
 supervisor/.estore in = \rsupervisor,
 study/.estore in = \rstudy,
 authors/.estore in = \rauthors,
+type/.estore in = \rtype,
 }
 
 \newcommand{\SetupReport}[1]{

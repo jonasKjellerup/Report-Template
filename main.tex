@@ -10,7 +10,8 @@
     group=A. XXX,
     period=Fall Semester 2020,
     supervisor=SUPERVISOR,
-    authors={Author One, Author Two, Author Three}
+    authors={Author One, Author Two, Author Three},
+    type=Semester Project
 }
 
 \begin{document}
@@ -25,7 +26,7 @@
 \tableofcontents
 
 \setlength{\parskip}{0.5\baselineskip plus2pt minus2pt}
-%\setlength\parindent{0pt} % uncomment to remove paragraph indents.
+%\setlength\parindent{0pt} % uncomment to remove paragraph indents globally.
 
 %\listoftodos
 {\setlength\parindent{0pt} % removes the paragraph indentation for the preface
@@ -36,6 +37,7 @@
 \pagenumbering{arabic} %use arabic page numbering
 \include{sections/introduction}
 \include{sections/problem-analysis}
+\include{sections/conclusion}
 
 \printbibliography[heading=bibintoc, title=References]
 \label{bib:refs}
