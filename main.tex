@@ -1,0 +1,46 @@
+\input{setup/preamble}
+\input{setup/macros}
+\addbibresource{refs.bib}
+
+\SetupReport{
+    title=Report title,
+    subtitle=Report subtitle,
+    theme=Theme,
+    study=Computer Science,
+    group=A. XXX,
+    period=Fall Semester 2020,
+    supervisor=SUPERVISOR,
+    authors={Author One, Author Two, Author Three}
+}
+
+\begin{document}
+
+\pagestyle{empty} %disable headers and footers
+\pagenumbering{roman} %use roman page numbering in the frontmatter
+\include{sections/frontmatter/frontpage}
+\include{sections/frontmatter/titlepage}
+
+\pdfbookmark[0]{Contents}{label:contents}
+\pagestyle{fancy} %enable headers and footers again
+\tableofcontents
+
+\setlength{\parskip}{0.5\baselineskip plus2pt minus2pt}
+%\setlength\parindent{0pt} % uncomment to remove paragraph indents.
+
+%\listoftodos
+{\setlength\parindent{0pt} % removes the paragraph indentation for the preface
+\include{sections/frontmatter/preface}}
+\cleardoublepage
+
+\setlength{\parskip}{0.5\baselineskip plus2pt minus2pt}
+\pagenumbering{arabic} %use arabic page numbering
+\include{sections/introduction}
+\include{sections/problem-analysis}
+
+\printbibliography[heading=bibintoc, title=References]
+\label{bib:refs}
+
+\appendix
+\input{sections/appendices/AppendixA}
+
+\end{document}
