@@ -1,5 +1,8 @@
 \usepackage{xparse}
 \usepackage{pgfkeys}
+\usepackage{pgfmath}
+
+\newcommand{\rauthorsplit}{2}
 
 \pgfkeys{
 /report/.is family,
@@ -12,6 +15,7 @@ period/.estore in = \rperiod,
 supervisor/.estore in = \rsupervisor,
 study/.estore in = \rstudy,
 authors/.estore in = \rauthors,
+authorsplit/.estore in = \rauthorsplit,
 type/.estore in = \rtype,
 }
 
@@ -28,18 +32,54 @@ type/.estore in = \rtype,
 }
 
 \ExplSyntaxOn
+\newcounter{report_counter}
 % Command for converting a comma separated list
 % to a line separated list
 \NewDocumentCommand{\listCTL}{ m }{
-    \clist_map_inline:nn { #1 } { ##1 \\ }
+    \setcounter{report_counter}{0}
+    \clist_map_inline:nn { #1 } {
+        \stepcounter{report_counter}
+        \ifnum\clist_count:n{#1}=\value{report_counter}
+            ##1
+        \else
+            ##1 \\
+        \fi
+    }
 }
+
+% Divides a given comma-separated list into smaller groups of #2 size
+% each group being separated by a new line and each element within
+% a group being separated by a comma and space.
+\NewDocumentCommand{\groupCL}{ m m } {
+    \setcounter{report_counter}{0}
+    \pgfmathparse{1}
+
+    \clist_map_inline:nn {#1}{
+        \stepcounter{report_counter}\pgfmathparse{Mod(\value{report_counter},#2)==0?0:1}
+        \ifnum\clist_count:n{#1}=\value{report_counter}
+        	##1  
+        \else
+        	\if 0\pgfmathresult
+        		##1 \\
+        	\else
+            	##1,\ 
+            \fi
+        \fi
+    }
+}
+
 \ExplSyntaxOff
 
-\newcommand{\GetAuthorList}[1][C]{
-    \if C#1%
-        \rauthors
-    \else%
+\newcommand{\GetAuthorList}[1][L]{
+    \if L#1%
         \expandafter\listCTL\expandafter{\rauthors}
+    \else%
+        \begingroup
+        \edef\x{%
+          \endgroup
+          \noexpand\groupCL{\unexpanded\expandafter{\rauthors}}{#1}
+        }%
+      \x
     \fi
 }
 
