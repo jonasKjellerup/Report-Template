@@ -141,6 +141,8 @@
 \newcommand\supervisor[1]{\providecommand\@supervisor{#1}}	% Macro for setting the supervisor
 \renewcommand\author[1]{\renewcommand\@author{#1}}
 
+\newcommand\@abstract{No abstract provided.}
+\newcommand\projectAbstract[1]{\renewcommand\@abstract{#1}}
 
 % Frontpage and project info
 \renewcommand\maketitle{%
@@ -232,9 +234,7 @@
 			} &
 			\parbox[t]{\titlepagerightcolumnwidth}{%
 			\textbf{Abstract:}\bigskip\par
-			\fbox{\parbox{\titlepagerightcolumnwidth-2\fboxsep-2\fboxrule}{%
-			Abstract % todo get this from user info
-			}}
+			\fbox{\parbox{\titlepagerightcolumnwidth-2\fboxsep-2\fboxrule}{\@abstract}}
 			}\\
 		\end{tabular}
 		\vfill
