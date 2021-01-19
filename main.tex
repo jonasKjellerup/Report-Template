@@ -1,48 +1,29 @@
-\input{setup/preamble}
-\input{setup/macros}
-\addbibresource{refs.bib}
+\documentclass[11pt]{aau-report}
 
-\SetupReport{
-    title=Report title,
-    subtitle=Report subtitle,
-    theme=Theme,
-    study=Computer Science,
-    group=A. XXX,
-    period=Fall Semester 2020,
-    supervisor=SUPERVISOR,
-    authors={Author One, Author Two, Author Three},
-    type=Semester Project,
-}
+\title{AAU Report Template}
+\subtitle{A \LaTeX{} report document class for AAU student reports}
+\reportfield{Computer Science}
+\reporttype{Class Documentation}
+\projecttheme{\LaTeX}
+\projectperiod{Autumn 2020}
+\supervisor{None}
+\groupname{A. XXX}
+\author{Jonas Mærsk Thye Kjellerup}
+\date{\the\year-\ifnum\month<10 0\fi\the\month}
 
 \begin{document}
 
-\pagestyle{empty} %disable headers and footers
-\pagenumbering{roman} %use roman page numbering in the frontmatter
-\include{sections/frontmatter/frontpage}
-\include{sections/frontmatter/titlepage}
-
-\pdfbookmark[0]{Contents}{label:contents}
-\pagestyle{fancy} %enable headers and footers again
-\tableofcontents
-
-\setlength{\parskip}{0.5\baselineskip plus2pt minus2pt}
-%\setlength\parindent{0pt} % uncomment to remove paragraph indents globally.
-
-%\listoftodos
-{\setlength\parindent{0pt} % removes the paragraph indentation for the preface
-\include{sections/frontmatter/preface}}
+\frontmatter
+\def\bothFrontpages{1}
+\maketitle[media/AAUgraphics/frontpageImage]
 \cleardoublepage
 
-\setlength{\parskip}{0.5\baselineskip plus2pt minus2pt}
-\pagenumbering{arabic} %use arabic page numbering
-\include{sections/introduction}
-\include{sections/problem-analysis}
-\include{sections/conclusion}
+\tableofcontents
+\chapter{Preface}
+This is a test preface ignore this please.
 
-\printbibliography[heading=bibintoc, title=References]
-\label{bib:refs}
-
-\appendix
-\input{sections/appendices/AppendixA}
+\mainmatter
+\chapter{Introduction}
+Insert short introduction here. There are \pageref{LastPage} pages.
 
 \end{document}
