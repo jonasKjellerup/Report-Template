@@ -43,6 +43,8 @@
 \RequirePackage{graphicx}
 \RequirePackage[contents={},color=gray]{background}
 \RequirePackage{fancyhdr}
+\RequirePackage{array}
+\RequirePackage{booktabs}
 
 \RequirePackage{xcolor}
 \RequirePackage{xparse}
@@ -58,6 +60,7 @@
   font=footnotesize,% set font size to footnotesize
   labelfont=bf % bold label (e.g., Figure 3.2) font
 }
+
 % Header settings
 \pagestyle{fancy}
 \fancyhf{} %delete everything
@@ -195,34 +198,49 @@
 					\bigskip
 					\bigskip
 					\centering
-					\Huge{\textbf{\@title}}% title
-				\end{minipage}}
+					\Huge{\textbf{
+\@title
+					}}% title
+				\end{minipage}
+				}
+				
 			\centerline{
 				\begin{minipage}{0.9\textwidth}
 					\bigskip
 					\centering
-					\Large{\@subtitle}
+					\Large{
+
+\@subtitle
+					}
 				\end{minipage}}
 					
 			\centerline{
 				\begin{minipage}{0.9\textwidth}
 					\bigskip
-					\centering{\Large\authorAList}% Authors
+					\centering{\Large
+\authorAList
+					}% Authors
 				\end{minipage}}
+
 			\centerline{
 				\begin{minipage}{0.9\textwidth}
 					\bigskip
 					\centering{\large% insert name of study, group number, year-month
-						\@reportfield{}, \@ifundefined{@groupname}{\ClassInfo{aau-report}{No group name provided. Omitting group name on frontpage. Group name can be set using \\groupname.}}{\@groupname{},} \the\year-06} 
+						\@reportfield{}, \@ifundefined{@groupname}{\ClassInfo{aau-report}{No group name provided. Omitting group name on frontpage. Group name can be set using \\groupname.}}{\@groupname{},} \@date} 
 				\end{minipage}}
+
 			\centerline{
 				\begin{minipage}{0.9\textwidth}
 					\bigskip
-					\centering{
-					\Large\@reporttype
+					\centering
+					
+					{\Large
+\@reporttype
 					}
 					\smallskip
-				\end{minipage}}
+				\end{minipage}
+				}
+				
 			\end{tabular}}}
 		
 		\vfill

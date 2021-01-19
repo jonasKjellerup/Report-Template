@@ -1,0 +1,47 @@
+\documentclass[11pt]{../aau-report}
+
+\title{AAU Report Template}
+\subtitle{A \LaTeX{} document class for AAU student reports}
+
+\reportfield{Computer Science}
+\reporttype{Class Documentation}
+
+\projecttheme{\LaTeX}
+\projectperiod{Autumn 2020}
+
+\author{Jonas Mærsk Thye Kjellerup}
+\graphicspath{{../media/}{../}}
+
+\newcommand\mn[1]{\texttt{\textbackslash{}#1}}
+
+\begin{document}
+
+\frontmatter
+\def\bothFrontpages{1}
+\maketitle[AAUgraphics/frontpageImage]
+
+
+
+\tableofcontents
+\chapter{Preface}
+The purpose of this document is to function as a usage guide for the document class. This document class is based on and uses large amounts of code from a \LaTeX{} template by Jesper Kjær Nielsen. The original repository can be found at the following link: \url{https://github.com/jkjaer/aauLatexTemplates}.
+
+\mainmatter
+\chapter{Usage examples}
+\chapter{Class documentation}
+
+\section{Document class options}
+In this section I will be going over the available options for the document class. It should be noted that this class derives from the book class, which means that any options that available for the book class is likewise available for this class.
+There is however one exception in regards to paper-size which is set to A4 and can not be changed.
+
+\texttt{report:} The report option changes the default values for page openings and sidedness to match that of the report class. Using this option is equivalent to invkoving the documentclass as following: \mn{documentclass[openany,oneside]\{aau-report\}}.
+
+\texttt{noprojectpage, noprojectinfo:} Both of these options are used to ensure that the project info page is not generated when invoking \mn{maketitle}.
+
+\section{Macros}
+This document class provides a series of macros, some of which are meant primarily for use within the documentclass itself and some that are not. It should also be noted that some of these are simply redefinitions of already preexisting macros like the \mn{author} macro.
+
+\mn{maketitle:} This macro is one of those redefinitios that i mentioned above. As one may expect this macro generates a title page for the document. In addition it also generates a project info page. The generation of this page can be disabled with the \texttt{noprojectinfo} option.
+The macro has one optional parameter, which expects a path to an image. When this parameter is present the macro will generate the version of the frontpage that can be seen on the first page of this document. When omitted the version seen on the second page will be generated.
+To display both pages the following line of code can be added to the document before using the macro: \verb|\def\bothFrontpages{1}|
+\end{document}
