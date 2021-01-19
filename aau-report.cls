@@ -174,6 +174,11 @@
 % Provides abstract for title/project page
 \newcommand\@abstract{No abstract provided.}
 \newcommand\projectAbstract[1]{\renewcommand\@abstract{#1}}
+\newcommand\insertAbstract{
+	\chapter*{Abstract}\label{ch:abstract}
+	\addcontentsline{toc}{chapter}{Abstract}
+	\@abstract
+}
 
 % Macros for the various frontpage versions.
 
@@ -276,7 +281,7 @@
 	    }\\
 	    \vspace{0.2cm}
 	    {\large
-	      \@reportfield{}, \@ifundefined{@groupname}{\ClassInfo{aau-report}{No group name provided. Omitting group name on frontpage. Group name can be set using \\groupname.}}{\@groupname{},} \the\year{}-\the\month{}
+	      \@reportfield{}, \@ifundefined{@groupname}{\ClassInfo{aau-report}{No group name provided. Omitting group name on frontpage. Group name can be set using \\groupname.}}{\@groupname{},} \@date
 	    }
 	   \end{center}
 	   \vspace{0.2cm}

@@ -41,7 +41,17 @@ There is however one exception in regards to paper-size which is set to A4 and c
 \section{Macros}
 This document class provides a series of macros, some of which are meant primarily for use within the documentclass itself and some that are not. It should also be noted that some of these are simply redefinitions of already preexisting macros like the \mn{author} macro.
 
-\mn{maketitle:} This macro is one of those redefinitios that i mentioned above. As one may expect this macro generates a title page for the document. In addition it also generates a project info page. The generation of this page can be disabled with the \texttt{noprojectinfo} option.
+\subsection{Frontmatter macros}
+This subsection will be covering macros which functionality relate to the setup of the various frontmatter such as frontpages and titlepages.
+
+\mn{maketitle[img-path]:} This macro is one of those redefinitions that i mentioned above. As one may expect this macro generates a title page for the document. In addition it also generates a project info page. The generation of this page can be disabled with the \texttt{noprojectinfo} option.
 The macro has one optional parameter, which expects a path to an image. When this parameter is present the macro will generate the version of the frontpage that can be seen on the first page of this document. When omitted the version seen on the second page will be generated.
 To display both pages the following line of code can be added to the document before using the macro: \verb|\def\bothFrontpages{1}|
+
+\mn{projectAbstract\{...\}}, \mn{insertAbstract:}  These two macros are used for managing abstract. This is only really needed if you plan to use the project-info page as it uses the value set by \mn{projectAbstract}. \mn{insertAbstract} can be used if you in addition to the abstract on the project-info page want the abstract inserted as its own standalone chapter. When a standalone chapter is inserted it will be given the label \texttt{ch:abstract} in case you wish reference it at some point.
+
+\subsection{Public internal macros}
+In this subsection, internal macros that are available for use outside the document class will be documented. These are macros that while intended for use internally can be used by the end user if they so wish.
+
+\mn{authorLList}, \mn{authorAList}, \mn{authorCList[n=2]:} All of three of these macros are used for printing author lists in various formats. \mn{authorLList} will print all of the document authors separated by newlines (meaning one author per line). \mn{authorCList} will print the authors separated by commas with a newline each $n$ names (meaning it will print $n$ authors per line). $n$ is an optional parameter that will default to $2$. \mn{authorAList} is a modified version of \mn{authorCList} that instead of inserting a newline each $n$ author names will determine how much space is left on the current line and insert a newline when the space remaining is insufficient.
 \end{document}
