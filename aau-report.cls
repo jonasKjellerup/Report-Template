@@ -190,7 +190,7 @@
 			scale=1.1,
 			angle=0,
 			opacity=1.0,  %% adjust
-			contents={\includegraphics[width=\paperwidth,height=\paperheight]{media/AAUgraphics/aau_waves}}}
+			contents={\includegraphics[width=\paperwidth,height=\paperheight]{media/AAUGraphics/aau_waves}}}
 				
 		\begin{center} %%please do not change the height or width of the frontpage image
 			\centerline{\includegraphics[totalheight=0.5\paperwidth,width=1\paperwidth]{#1}}% 
@@ -251,7 +251,7 @@
 		\vfill
 		\begin{figure}[!b]
 			\centering
-			\includegraphics[width=0.2\paperwidth]{media/AAUgraphics/aau_logo_circle_en}
+			\includegraphics[width=0.2\paperwidth]{media/AAUGraphics/aau_logo_circle_en}
 		\end{figure}
 	\end{titlepage}
 	\restoregeometry}
