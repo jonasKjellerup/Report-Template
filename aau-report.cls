@@ -314,7 +314,7 @@
 		\@regularFrontpage}
 	\else
 		\@imageFrontpage{#1}
-	\fi
+	\fi\fi
 
 	%
 	% Project info
